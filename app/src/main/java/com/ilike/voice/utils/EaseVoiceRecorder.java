@@ -59,7 +59,8 @@ public class EaseVoiceRecorder {
             // file = File.createTempFile(PREFIX + userId, EXTENSION,
             // User.getVoicePath());
             voiceFileName = getVoiceFileName(System.currentTimeMillis() + "");
-            PathUtil.getInstance().initDirs("chat","voice",appContext);
+            //PathUtil.getInstance().initDirs("chat","voice",appContext);
+            PathUtil.getInstance().createDirs("chat","voice",appContext);
             voiceFilePath = PathUtil.getInstance().getVoicePath() + "/" + voiceFileName;
             file = new File(voiceFilePath);
             recorder.setOutputFile(file.getAbsolutePath());

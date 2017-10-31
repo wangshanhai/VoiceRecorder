@@ -11,7 +11,7 @@ import android.os.Environment;
 import java.io.File;
 
 public class PathUtil {
-    public static String pathPrefix;
+    public static String pathPrefix="/Android/data/";
     public static final String historyPathName = "/chat/";
     public static final String imagePathName = "/image/";
     public static final String voicePathName = "/voice/";
@@ -67,6 +67,17 @@ public class PathUtil {
         }
 
     }
+
+
+    public void createDirs(String var1, String var2, Context var3) {
+        String var4 = var3.getPackageName();
+        pathPrefix = "/Android/data/" + var4 + "/";
+        this.voicePath = generateVoicePath(var1, var2, var3);
+        if(!this.voicePath.exists()) {
+            this.voicePath.mkdirs();
+        }
+    }
+
 
     public File getImagePath() {
         return this.imagePath;
