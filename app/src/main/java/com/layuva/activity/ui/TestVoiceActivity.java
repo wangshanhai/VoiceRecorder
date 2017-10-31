@@ -1,0 +1,135 @@
+package com.layuva.activity.ui;
+
+import android.Manifest;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.layuva.R;
+import com.layuva.activity.adapter.EaseMessageAdapter;
+import com.layuva.activity.model.MessageBean;
+import com.layuva.activity.utils.EMError;
+import com.layuva.activity.utils.TimeUtils;
+import com.layuva.activity.utils.emoji.EaseEmojicon;
+import com.layuva.activity.widget.EaseChatExtendMenu;
+import com.layuva.activity.widget.EaseChatInputMenu;
+import com.layuva.activity.widget.EaseVoiceRecorderView;
+import com.layuva.activity.widget.chatrow.EaseChatRowVoicePlayClickListener;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
+
+public class TestVoiceActivity extends AppCompatActivity {
+
+
+    protected EaseVoiceRecorderView voiceRecorderView;
+    protected ListView message_list;
+    protected TextView tvRecorder;
+
+
+    private List<MessageBean> voices;
+    EaseMessageAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
+        voices = new ArrayList<>();
+        initView();
+        getPermissions();
+    }
+
+    //运行授权，6.0以上系统需要
+    private void getPermissions() {
+        RxPermissions rxPermissions = new RxPermissions(TestVoiceActivity.this);
+        rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Boolean value) {
+                        if (value) {
+                            Toast.makeText(TestVoiceActivity.this, "同意权限", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(TestVoiceActivity.this, "拒绝权限", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+
+    private void initView() {
+
+        message_list = findViewById(R.id.message_list);
+
+        // hold to record voice
+        //noinspection ConstantConditions
+        voiceRecorderView = (EaseVoiceRecorderView) findViewById(R.id.voice_recorder);
+
+        tvRecorder = (TextView) findViewById(R.id.tv_touch_recorder);
+
+        tvRecorder.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                return  voiceRecorderView.onPressToSpeakBtnTouch(v, event, new EaseVoiceRecorderView.EaseVoiceRecorderCallback() {
+
+                    @Override
+                    public void onVoiceRecordComplete(String voiceFilePath, int voiceTimeLength) {
+                        Log.e("voiceFilePath=", voiceFilePath + "  time = " + voiceTimeLength);
+                        //   sendVoiceMessage(voiceFilePath, voiceTimeLength);
+                        MessageBean bean = new MessageBean();
+                        bean.path = voiceFilePath;
+                        bean.msg = "image";
+                        bean.second = voiceTimeLength;
+                        bean.time = TimeUtils.getCurrentTimeInLong();
+                        voices.add(bean);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        });
+
+
+        adapter = new EaseMessageAdapter(this, voices);
+        message_list.setAdapter(adapter);
+        adapter.setOnItemClickLister(new EaseMessageAdapter.onItemClickLister() {
+            @Override
+            public void onItemClick(ImageView imageView, String path, int position) {
+                //播放语音
+                new EaseChatRowVoicePlayClickListener(imageView, path, TestVoiceActivity.this,
+                        adapter).playVoice(path);
+            }
+        });
+
+    }
+
+}
