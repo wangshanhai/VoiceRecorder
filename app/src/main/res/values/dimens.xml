@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="size_avatar">48dp</dimen>
+    <dimen name="margin_chat_activity">5dp</dimen>
+</resources>
