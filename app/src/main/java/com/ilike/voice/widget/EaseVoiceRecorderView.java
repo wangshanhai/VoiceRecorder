@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.layuva.R;
+import com.ilike.voice.R;
 import com.ilike.voice.utils.EMError;
 import com.ilike.voice.utils.EaseCommonUtils;
 import com.ilike.voice.utils.EaseVoiceRecorder;

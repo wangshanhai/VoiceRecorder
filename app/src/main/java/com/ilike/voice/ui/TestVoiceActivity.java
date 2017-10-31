@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.layuva.R;
+import com.ilike.voice.R;
 import com.ilike.voice.adapter.EaseMessageAdapter;
 import com.ilike.voice.model.MessageBean;
 import com.ilike.voice.utils.TimeUtils;

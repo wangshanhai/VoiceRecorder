@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2016 Hyphenate Inc. All rights reserved.
+ * Copyright (C) 2017 Inc. All rights reserved.
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,13 +23,16 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.layuva.R;
+import com.ilike.voice.R;
 import com.ilike.voice.utils.EaseUI;
 
 import java.io.File;
 
 /**
- * 语音row播放点击事件监听
+ * desc:   voice play click listener
+ * author: wangshanhai
+ * email: ilikeshatang@gmail.com
+ * date: 2017/10/31 15:29
  */
 public class EaseChatRowVoicePlayClickListener implements View.OnClickListener {
     private static final String TAG = "VoicePlayClickListener";
