@@ -1,13 +1,13 @@
-package com.layuva.activity.adapter;
+package com.ilike.voice.adapter;
 
 
 /**
  * Copyright (C) 2017  Inc. All rights reserved.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,7 +16,6 @@ package com.layuva.activity.adapter;
  */
 
 import android.content.Context;
-import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +25,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.layuva.R;
-import com.layuva.activity.model.MessageBean;
-import com.layuva.activity.utils.EaseCommonUtils;
-import com.layuva.activity.utils.emoji.EaseSmileUtils;
-import com.layuva.activity.utils.TimeUtils;
+import com.ilike.voice.model.MessageBean;
+import com.ilike.voice.utils.EaseCommonUtils;
+import com.ilike.voice.utils.TimeUtils;
 
 import java.util.List;
 
@@ -95,22 +93,15 @@ public class EaseMessageAdapter extends BaseAdapter {
 
         final MessageBean bean = list.get(position);
 
-        if ("".equals(bean.path)) {
-            viewHolder.bubble_text.setVisibility(View.VISIBLE);
-            viewHolder.bubble.setVisibility(View.GONE);
+        viewHolder.bubble_text.setVisibility(View.GONE);
+        viewHolder.bubble.setVisibility(View.VISIBLE);
+        //更改并显示录音条长度
+        RelativeLayout.LayoutParams ps = (RelativeLayout.LayoutParams) viewHolder.bubble.getLayoutParams();
+        ps.width = EaseCommonUtils.getVoiceLineWight2(context, bean.second);
+        viewHolder.bubble.setLayoutParams(ps); //更改语音长条长度
 
-            Spannable span = EaseSmileUtils.getSmiledText(context, bean.msg);
-            viewHolder.tv_chatcontent.setText(span, TextView.BufferType.SPANNABLE);
-        } else {
-            viewHolder.bubble_text.setVisibility(View.GONE);
-            viewHolder.bubble.setVisibility(View.VISIBLE);
-            //更改并显示录音条长度
-            RelativeLayout.LayoutParams ps = (RelativeLayout.LayoutParams) viewHolder.bubble.getLayoutParams();
-            ps.width = EaseCommonUtils.getVoiceLineWight2(context, bean.second);
-            viewHolder.bubble.setLayoutParams(ps); //更改语音长条长度
+        viewHolder.tv_length.setText(bean.second + "");
 
-            viewHolder.tv_length.setText(bean.second + "");
-        }
 
         viewHolder.timestamp.setText(TimeUtils.getTime(bean.time));
 

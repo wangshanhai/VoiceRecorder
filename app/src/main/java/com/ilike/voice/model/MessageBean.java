@@ -1,4 +1,4 @@
-package com.layuva.activity.model;
+package com.ilike.voice.model;
 
 import java.io.Serializable;
 

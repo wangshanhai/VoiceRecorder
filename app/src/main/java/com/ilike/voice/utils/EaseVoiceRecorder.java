@@ -1,4 +1,4 @@
-package com.layuva.activity.utils;
+package com.ilike.voice.utils;
 
 import android.content.Context;
 import android.media.MediaRecorder;
@@ -6,9 +6,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.text.format.Time;
 import android.util.Log;
-
-import com.layuva.activity.utils.EMError;
-import com.layuva.activity.utils.PathUtil;
 
 import java.io.File;
 import java.io.IOException;

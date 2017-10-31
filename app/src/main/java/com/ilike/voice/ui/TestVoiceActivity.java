@@ -1,30 +1,22 @@
-package com.layuva.activity.ui;
+package com.ilike.voice.ui;
 
 import android.Manifest;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.layuva.R;
-import com.layuva.activity.adapter.EaseMessageAdapter;
-import com.layuva.activity.model.MessageBean;
-import com.layuva.activity.utils.EMError;
-import com.layuva.activity.utils.TimeUtils;
-import com.layuva.activity.utils.emoji.EaseEmojicon;
-import com.layuva.activity.widget.EaseChatExtendMenu;
-import com.layuva.activity.widget.EaseChatInputMenu;
-import com.layuva.activity.widget.EaseVoiceRecorderView;
-import com.layuva.activity.widget.chatrow.EaseChatRowVoicePlayClickListener;
+import com.ilike.voice.adapter.EaseMessageAdapter;
+import com.ilike.voice.model.MessageBean;
+import com.ilike.voice.utils.TimeUtils;
+import com.ilike.voice.widget.EaseVoiceRecorderView;
+import com.ilike.voice.widget.chatrow.EaseChatRowVoicePlayClickListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;

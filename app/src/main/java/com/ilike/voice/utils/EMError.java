@@ -1,4 +1,4 @@
-package com.layuva.activity.utils;
+package com.ilike.voice.utils;
 
 /**
  * desc:   错误码实体类

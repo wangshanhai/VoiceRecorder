@@ -1,4 +1,4 @@
-package com.layuva.activity.utils;
+package com.ilike.voice.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -6,12 +6,9 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.layuva.activity.utils.emoji.EaseEmojicon;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public final class EaseUI {
     private static final String TAG = EaseUI.class.getSimpleName();
@@ -131,46 +128,6 @@ public final class EaseUI {
         return processName;
     }
 
-
-    /**
-     * Emojicon provider
-     */
-    public interface EaseEmojiconInfoProvider {
-        /**
-         * return EaseEmojicon for input emojiconIdentityCode
-         *
-         * @param emojiconIdentityCode
-         * @return
-         */
-        EaseEmojicon getEmojiconInfo(String emojiconIdentityCode);
-
-        /**
-         * get Emojicon map, key is the text of emoji, value is the resource id or local path of emoji icon(can't be URL on internet)
-         *
-         * @return
-         */
-        Map<String, Object> getTextEmojiconMapping();
-    }
-
-    private EaseEmojiconInfoProvider emojiconInfoProvider;
-
-    /**
-     * Emojicon provider
-     *
-     * @return
-     */
-    public EaseEmojiconInfoProvider getEmojiconInfoProvider() {
-        return emojiconInfoProvider;
-    }
-
-    /**
-     * set Emojicon provider
-     *
-     * @param emojiconInfoProvider
-     */
-    public void setEmojiconInfoProvider(EaseEmojiconInfoProvider emojiconInfoProvider) {
-        this.emojiconInfoProvider = emojiconInfoProvider;
-    }
 
 
 

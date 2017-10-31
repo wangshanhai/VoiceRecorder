@@ -11,7 +11,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.layuva.activity.widget.chatrow;
+package com.ilike.voice.widget.chatrow;
 
 import android.app.Activity;
 import android.content.Context;
@@ -24,7 +24,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.layuva.R;
-import com.layuva.activity.utils.EaseUI;
+import com.ilike.voice.utils.EaseUI;
 
 import java.io.File;
 

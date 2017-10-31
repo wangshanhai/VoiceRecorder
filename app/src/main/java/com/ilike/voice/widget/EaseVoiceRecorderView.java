@@ -1,4 +1,4 @@
-package com.layuva.activity.widget;
+package com.ilike.voice.widget;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -16,14 +16,16 @@ import android.widget.Toast;
 
 
 import com.layuva.R;
-import com.layuva.activity.utils.EMError;
-import com.layuva.activity.utils.EaseCommonUtils;
-import com.layuva.activity.utils.EaseVoiceRecorder;
-import com.layuva.activity.widget.chatrow.EaseChatRowVoicePlayClickListener;
+import com.ilike.voice.utils.EMError;
+import com.ilike.voice.utils.EaseCommonUtils;
+import com.ilike.voice.utils.EaseVoiceRecorder;
+import com.ilike.voice.widget.chatrow.EaseChatRowVoicePlayClickListener;
 
 /**
- * Voice recorder view
- *
+ * desc:   Voice recorder view
+ * author: wangshanhai
+ * email: ilikeshatang@gmail.com
+ * date: 2017/10/31 15:27
  */
 public class EaseVoiceRecorderView extends RelativeLayout {
     protected Context context;
