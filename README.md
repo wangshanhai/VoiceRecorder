@@ -1,7 +1,7 @@
 
-[![Bintray](https://img.shields.io/bintray/v/contrarywind/maven/Android-PickerView.svg)](https://bintray.com/contrarywind/maven/Android-PickerView)
+[![Bintray](https://img.shields.io/bintray/v/ilike/maven/voicerecorder.svg)](https://bintray.com/ilike/maven/voicerecorder)
 [![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg)](https://android-arsenal.com/api?level=9) 
-[![download](https://img.shields.io/badge/downloadZip-v3.2.6-orange.svg)](https://github.com/Bigkoo/Android-PickerView/archive/master.zip)
+[![download](https://img.shields.io/badge/downloadZip-v3.2.6-orange.svg)](https://github.com/wangshanhai/VoiceRecorder/archive/master.zip)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 
