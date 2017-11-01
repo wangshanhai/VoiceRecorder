@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 Inc. All rights reserved.
+ * Copyright (C) 2017 ilikeshatang. All rights reserved.
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import android.widget.ImageView;
 
 
 import com.ilike.voicerecorder.R;
-import com.ilike.voicerecorder.utils.EaseUI;
+import com.ilike.voicerecorder.utils.VoiceProvider;
 
 import java.io.File;
 
@@ -101,7 +101,7 @@ public class VoicePlayClickListener implements View.OnClickListener {
         AudioManager audioManager = (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
 
         mediaPlayer = new MediaPlayer();
-        if (EaseUI.getInstance().getSettingsProvider().isSpeakerOpened()) {
+        if (VoiceProvider.getInstance().getSettingsProvider().isSpeakerOpened()) {
             audioManager.setMode(AudioManager.MODE_NORMAL);
             audioManager.setSpeakerphoneOn(true);
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
@@ -152,7 +152,7 @@ public class VoicePlayClickListener implements View.OnClickListener {
         AudioManager audioManager = (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
 
         mediaPlayer = new MediaPlayer();
-        if (EaseUI.getInstance().getSettingsProvider().isSpeakerOpened()) {
+        if (VoiceProvider.getInstance().getSettingsProvider().isSpeakerOpened()) {
             audioManager.setMode(AudioManager.MODE_NORMAL);
             audioManager.setSpeakerphoneOn(true);
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);

@@ -1,17 +1,17 @@
 package com.ilike.voicerecorder.utils;
 
-public final class EaseUI {
-    private static final String TAG = EaseUI.class.getSimpleName();
+public final class VoiceProvider {
+    private static final String TAG = VoiceProvider.class.getSimpleName();
 
     /**
      * the global EaseUI instance
      */
-    private static EaseUI instance = null;
+    private static VoiceProvider instance = null;
 
     private SettingsProvider settingsProvider;
 
 
-    private EaseUI() {
+    private VoiceProvider() {
     }
 
     /**
@@ -19,9 +19,9 @@ public final class EaseUI {
      *
      * @return
      */
-    public synchronized static EaseUI getInstance() {
+    public synchronized static VoiceProvider getInstance() {
         if (instance == null) {
-            instance = new EaseUI();
+            instance = new VoiceProvider();
         }
         return instance;
     }
