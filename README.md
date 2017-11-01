@@ -66,5 +66,4 @@ tvRecorder.setOnTouchListener(new View.OnTouchListener() {
             android:visibility="invisible" />
     
   ```
-
-
+![recordingView.jpg](https://github.com/wangshanhai/VoiceRecorder/blob/master/image/recordingView.jpg)
