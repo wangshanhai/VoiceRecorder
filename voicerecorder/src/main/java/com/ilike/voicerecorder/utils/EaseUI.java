@@ -8,9 +8,7 @@ public final class EaseUI {
      */
     private static EaseUI instance = null;
 
-
-
-    private EaseSettingsProvider settingsProvider;
+    private SettingsProvider settingsProvider;
 
 
     private EaseUI() {
@@ -29,11 +27,11 @@ public final class EaseUI {
     }
 
 
-    public void setSettingsProvider(EaseSettingsProvider settingsProvider){
+    public void setSettingsProvider(SettingsProvider settingsProvider){
         this.settingsProvider = settingsProvider;
     }
 
-    public EaseSettingsProvider getSettingsProvider(){
+    public SettingsProvider getSettingsProvider(){
         if(settingsProvider == null){
             settingsProvider = new DefaultSettingsProvider();
         }
@@ -46,14 +44,14 @@ public final class EaseUI {
     /**
      * new message options provider
      */
-    public interface EaseSettingsProvider {
+    public interface SettingsProvider {
         boolean isSpeakerOpened();
     }
 
     /**
      * default settings provider
      */
-    protected class DefaultSettingsProvider implements EaseSettingsProvider {
+    protected class DefaultSettingsProvider implements SettingsProvider {
 
 
         @Override
