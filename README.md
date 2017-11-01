@@ -71,9 +71,9 @@ VoicePlayClickListener.setStopPlayIcon(R.drawable.ease_chatto_voice_playing)
 
 ```java
 /**
-* 设置播放语音的动画，
+* 设置播放语音的帧动画，
 */
-VoicePlayClickListener.setStopPlayIcon(R.drawable.ease_chatto_voice_playing)
+VoicePlayClickListener.setPlayingIconDrawableResoure(R.drawable.voice_to_icon)
 
 -------------------------------------------------------
 比如这样的动画:
