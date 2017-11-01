@@ -15,8 +15,8 @@ import com.ilike.voice.R;
 import com.ilike.voice.adapter.EaseMessageAdapter;
 import com.ilike.voice.model.MessageBean;
 import com.ilike.voicerecorder.utils.TimeUtils;
-import com.ilike.voicerecorder.widget.EaseVoiceRecorderView;
-import com.ilike.voicerecorder.widget.chatrow.EaseChatRowVoicePlayClickListener;
+import com.ilike.voicerecorder.widget.VoiceRecorderView;
+import com.ilike.voicerecorder.widget.VoicePlayClickListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import io.reactivex.disposables.Disposable;
 
 public class TestVoiceActivity extends AppCompatActivity {
 
-    protected EaseVoiceRecorderView voiceRecorderView;
+    protected VoiceRecorderView voiceRecorderView;
     protected ListView message_list;
     protected TextView tvRecorder;
 
@@ -83,7 +83,7 @@ public class TestVoiceActivity extends AppCompatActivity {
 
         // hold to record voice
         //noinspection ConstantConditions
-        voiceRecorderView = (EaseVoiceRecorderView) findViewById(R.id.voice_recorder);
+        voiceRecorderView = (VoiceRecorderView) findViewById(R.id.voice_recorder);
 
         tvRecorder = (TextView) findViewById(R.id.tv_touch_recorder);
 
@@ -91,7 +91,7 @@ public class TestVoiceActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                return  voiceRecorderView.onPressToSpeakBtnTouch(v, event, new EaseVoiceRecorderView.EaseVoiceRecorderCallback() {
+                return  voiceRecorderView.onPressToSpeakBtnTouch(v, event, new VoiceRecorderView.EaseVoiceRecorderCallback() {
 
                     @Override
                     public void onVoiceRecordComplete(String voiceFilePath, int voiceTimeLength) {
@@ -116,7 +116,7 @@ public class TestVoiceActivity extends AppCompatActivity {
             @Override
             public void onItemClick(ImageView imageView, String path, int position) {
                 //播放语音
-                new EaseChatRowVoicePlayClickListener(imageView, path, TestVoiceActivity.this,
+                new VoicePlayClickListener(imageView, path, TestVoiceActivity.this,
                         adapter).playVoice(path);
             }
         });

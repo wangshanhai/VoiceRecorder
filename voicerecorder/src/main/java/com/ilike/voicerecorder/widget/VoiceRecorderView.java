@@ -16,9 +16,8 @@ import android.widget.Toast;
 
 import com.ilike.voicerecorder.R;
 import com.ilike.voicerecorder.utils.EMError;
-import com.ilike.voicerecorder.utils.EaseCommonUtils;
-import com.ilike.voicerecorder.core.EaseVoiceRecorder;
-import com.ilike.voicerecorder.widget.chatrow.EaseChatRowVoicePlayClickListener;
+import com.ilike.voicerecorder.utils.CommonUtils;
+import com.ilike.voicerecorder.core.VoiceRecorder;
 
 
 /**
@@ -27,11 +26,11 @@ import com.ilike.voicerecorder.widget.chatrow.EaseChatRowVoicePlayClickListener;
  * email: ilikeshatang@gmail.com
  * date: 2017/10/31 15:27
  */
-public class EaseVoiceRecorderView extends RelativeLayout {
+public class VoiceRecorderView extends RelativeLayout {
     protected Context context;
     protected LayoutInflater inflater;
     protected Drawable[] micImages;
-    protected EaseVoiceRecorder voiceRecorder;
+    protected VoiceRecorder voiceRecorder;
 
     protected PowerManager.WakeLock wakeLock;
     protected ImageView micImage;
@@ -45,17 +44,17 @@ public class EaseVoiceRecorderView extends RelativeLayout {
         }
     };
 
-    public EaseVoiceRecorderView(Context context) {
+    public VoiceRecorderView(Context context) {
         super(context);
         init(context);
     }
 
-    public EaseVoiceRecorderView(Context context, AttributeSet attrs) {
+    public VoiceRecorderView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public EaseVoiceRecorderView(Context context, AttributeSet attrs, int defStyle) {
+    public VoiceRecorderView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context);
     }
@@ -67,7 +66,7 @@ public class EaseVoiceRecorderView extends RelativeLayout {
         micImage = (ImageView) findViewById(R.id.mic_image);
         recordingHint = (TextView) findViewById(R.id.recording_hint);
 
-        voiceRecorder = new EaseVoiceRecorder(micImageHandler);
+        voiceRecorder = new VoiceRecorder(micImageHandler);
 
         // animation resources, used for recording
         micImages = new Drawable[] { getResources().getDrawable(R.drawable.ease_record_animate_01),
@@ -99,8 +98,8 @@ public class EaseVoiceRecorderView extends RelativeLayout {
         switch (event.getAction()) {
         case MotionEvent.ACTION_DOWN:
             try {
-                if (EaseChatRowVoicePlayClickListener.isPlaying)
-                    EaseChatRowVoicePlayClickListener.currentPlayListener.stopPlayVoice();
+                if (VoicePlayClickListener.isPlaying)
+                    VoicePlayClickListener.currentPlayListener.stopPlayVoice();
                 v.setPressed(true);
                 startRecording();
             } catch (Exception e) {
@@ -158,7 +157,7 @@ public class EaseVoiceRecorderView extends RelativeLayout {
     }
 
     public void startRecording() {
-        if (!EaseCommonUtils.isSdcardExist()) {
+        if (!CommonUtils.isSdcardExist()) {
             Toast.makeText(context, R.string.Send_voice_need_sdcard_support, Toast.LENGTH_SHORT).show();
             return;
         }

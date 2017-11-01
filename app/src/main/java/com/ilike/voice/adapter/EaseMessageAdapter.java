@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import com.ilike.voice.R;
 import com.ilike.voice.model.MessageBean;
-import com.ilike.voicerecorder.utils.EaseCommonUtils;
+import com.ilike.voicerecorder.utils.CommonUtils;
 import com.ilike.voicerecorder.utils.TimeUtils;
 
 import java.util.List;
@@ -97,7 +97,7 @@ public class EaseMessageAdapter extends BaseAdapter {
         viewHolder.bubble.setVisibility(View.VISIBLE);
         //更改并显示录音条长度
         RelativeLayout.LayoutParams ps = (RelativeLayout.LayoutParams) viewHolder.bubble.getLayoutParams();
-        ps.width = EaseCommonUtils.getVoiceLineWight2(context, bean.second);
+        ps.width = CommonUtils.getVoiceLineWight2(context, bean.second);
         viewHolder.bubble.setLayoutParams(ps); //更改语音长条长度
 
         viewHolder.tv_length.setText(bean.second + "");

@@ -20,7 +20,7 @@
             android:footerDividersEnabled="false"
             android:headerDividersEnabled="false" />
 
-        <com.ilike.voicerecorder.widget.EaseVoiceRecorderView
+        <com.ilike.voicerecorder.widget.VoiceRecorderView
             android:id="@+id/voice_recorder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -25,7 +25,7 @@ import java.util.List;
  * email: ilikeshatang@gmail.com
  * date: 2017/10/30 17:18
  */
-public class EaseCommonUtils {
+public class CommonUtils {
     private static final String TAG = "CommonUtils";
 
 

@@ -20,7 +20,7 @@ import java.util.Date;
  * email: ilikeshatang@gmail.com
  * date: 2017/10/30 18:36
  */
-public class EaseVoiceRecorder {
+public class VoiceRecorder {
     MediaRecorder recorder;
 
     static final String PREFIX = "voice";
@@ -33,7 +33,7 @@ public class EaseVoiceRecorder {
     private File file;
     private Handler handler;
 
-    public EaseVoiceRecorder(Handler handler) {
+    public VoiceRecorder(Handler handler) {
         this.handler = handler;
     }
 

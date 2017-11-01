@@ -11,7 +11,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ilike.voicerecorder.widget.chatrow;
+package com.ilike.voicerecorder.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -35,7 +35,7 @@ import java.io.File;
  * email: ilikeshatang@gmail.com
  * date: 2017/10/31 15:29
  */
-public class EaseChatRowVoicePlayClickListener implements View.OnClickListener {
+public class VoicePlayClickListener implements View.OnClickListener {
     private static final String TAG = "VoicePlayClickListener";
 
     ImageView voiceIconView;
@@ -47,11 +47,11 @@ public class EaseChatRowVoicePlayClickListener implements View.OnClickListener {
     private BaseAdapter adapter;
 
     public static boolean isPlaying = false;
-    public static EaseChatRowVoicePlayClickListener currentPlayListener = null;
+    public static VoicePlayClickListener currentPlayListener = null;
     public static String playMsgId = "";
     public static String getLocalUrl = "";
 
-    public EaseChatRowVoicePlayClickListener(ImageView v, String micUrl, Activity context, BaseAdapter adapter) {
+    public VoicePlayClickListener(ImageView v, String micUrl, Activity context, BaseAdapter adapter) {
         this.getLocalUrl = micUrl;
         this.activity = context;
         voiceIconView = v;
@@ -59,6 +59,9 @@ public class EaseChatRowVoicePlayClickListener implements View.OnClickListener {
 
     }
 
+    /**
+     * stop play voice
+     */
     public void stopPlayVoice() {
         voiceAnimation.stop();
         voiceIconView.setImageResource(R.drawable.ease_chatto_voice_playing);
@@ -73,6 +76,10 @@ public class EaseChatRowVoicePlayClickListener implements View.OnClickListener {
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * play voice for path
+     * @param filePath
+     */
     public void playVoice(String filePath) {
 
         if (isPlaying) {
@@ -147,41 +154,12 @@ public class EaseChatRowVoicePlayClickListener implements View.OnClickListener {
             currentPlayListener.stopPlayVoice();
         }
 
-
-  /*      if (message.direct() == EMMessage.Direct.SEND) {
-            // for sent msg, we will try to play the voice file directly
-            playVoice(voiceBody.getLocalUrl());
-        } else {*/
-
         File file = new File(getLocalUrl);
         if (file.exists() && file.isFile()) {
             //  playVoice(getLocalUrl);
         } else
             Log.e(TAG, "file not exist");
 
-           /* } else if (message.status() == EMMessage.Status.INPROGRESS) {
-                Toast.makeText(activity, st, Toast.LENGTH_SHORT).show();
-            } else if (message.status() == EMMessage.Status.FAIL) {
-                Toast.makeText(activity, st, Toast.LENGTH_SHORT).show();
-                new AsyncTask<Void, Void, Void>() {
-
-                    @Override
-                    protected Void doInBackground(Void... params) {
-                     //   EMClient.getInstance().chatManager().downloadAttachment(message);
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Void result) {
-                        super.onPostExecute(result);
-                        adapter.notifyDataSetChanged();
-                    }
-
-                }.execute();
-*/
     }
-
-    //}
-    //}
 
 }
