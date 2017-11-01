@@ -1,4 +1,11 @@
 
+[![Bintray](https://img.shields.io/bintray/v/contrarywind/maven/Android-PickerView.svg)](https://bintray.com/contrarywind/maven/Android-PickerView)
+[![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg)](https://android-arsenal.com/api?level=9) 
+[![download](https://img.shields.io/badge/downloadZip-v3.2.6-orange.svg)](https://github.com/Bigkoo/Android-PickerView/archive/master.zip)
+[![license](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
+
+
 ## 介绍
 
 这是一款参考环信的语音录制和播放库，轻量级，自带语音录制时动画效果，根据声音大小进行动画展示：
