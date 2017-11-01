@@ -86,7 +86,6 @@ public class TestVoiceActivity extends AppCompatActivity {
         voiceRecorderView = (VoiceRecorderView) findViewById(R.id.voice_recorder);
 
         tvRecorder = (TextView) findViewById(R.id.tv_touch_recorder);
-
         tvRecorder.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
