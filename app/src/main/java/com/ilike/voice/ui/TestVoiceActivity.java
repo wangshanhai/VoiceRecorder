@@ -15,6 +15,7 @@ import com.ilike.voice.R;
 import com.ilike.voice.adapter.EaseMessageAdapter;
 import com.ilike.voice.model.MessageBean;
 import com.ilike.voicerecorder.core.VoiceRecorder;
+import com.ilike.voicerecorder.utils.PathUtil;
 import com.ilike.voicerecorder.utils.TimeUtils;
 import com.ilike.voicerecorder.widget.VoiceRecorderView;
 import com.ilike.voicerecorder.widget.VoicePlayClickListener;
@@ -85,7 +86,7 @@ public class TestVoiceActivity extends AppCompatActivity {
         // hold to record voice
         //noinspection ConstantConditions
         voiceRecorderView = (VoiceRecorderView) findViewById(R.id.voice_recorder);
-
+        
         tvRecorder = (TextView) findViewById(R.id.tv_touch_recorder);
         tvRecorder.setOnTouchListener(new View.OnTouchListener() {
             @Override

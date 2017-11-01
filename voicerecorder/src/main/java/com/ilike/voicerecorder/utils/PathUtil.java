@@ -81,6 +81,17 @@ public class PathUtil {
     }
 
 
+    public void initDirs(String var1, Context var2) {
+        String var4 = var2.getPackageName();
+        pathPrefix = "/Android/data/" + var4 + "/";
+        this.voicePath = generateVoicePathForCustom(var1, var2);
+        if(!this.voicePath.exists()) {
+            this.voicePath.mkdirs();
+        }
+    }
+
+
+
     public File getImagePath() {
         return this.imagePath;
     }
@@ -131,6 +142,17 @@ public class PathUtil {
             var3 = pathPrefix + var1 + "/voice/";
         } else {
             var3 = pathPrefix + var0 + "/" + var1 + "/voice/";
+        }
+
+        return new File(getStorageDir(var2), var3);
+    }
+
+    private static File generateVoicePathForCustom(String var0, Context var2) {
+        String var3 = null;
+        if(var0 == null) {
+            var3 = pathPrefix +"/voice/";
+        } else {
+            var3 = pathPrefix + var0;
         }
 
         return new File(getStorageDir(var2), var3);
