@@ -42,6 +42,7 @@ PathUtil.getInstance().createDirs("chat", "voice", appContext);
 ```
 
 
+
 ```java
 /**
 * 自定义命名文件
@@ -50,6 +51,16 @@ PathUtil.getInstance().createDirs("chat", "voice", appContext);
 voiceRecorderView.setCustomNamingFile(true,"语音命名.mp3");
 
 ```
+
+```java
+/**
+* 自定义语音录制过程中，声音大小的动画，默认使用库文件中的动画，
+* 目前默认需要设置15张图片，以后更新自定义动画帧数
+*/
+voiceRecorderView.setDrawableAnimation(Drawable[] animationDrawable)
+
+```
+
 
 ```java
 /**

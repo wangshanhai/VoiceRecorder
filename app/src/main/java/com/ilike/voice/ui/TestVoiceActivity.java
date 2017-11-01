@@ -1,6 +1,7 @@
 package com.ilike.voice.ui;
 
 import android.Manifest;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -86,7 +87,7 @@ public class TestVoiceActivity extends AppCompatActivity {
         // hold to record voice
         //noinspection ConstantConditions
         voiceRecorderView = (VoiceRecorderView) findViewById(R.id.voice_recorder);
-        
+
         tvRecorder = (TextView) findViewById(R.id.tv_touch_recorder);
         tvRecorder.setOnTouchListener(new View.OnTouchListener() {
             @Override

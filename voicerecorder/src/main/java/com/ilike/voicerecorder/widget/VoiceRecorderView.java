@@ -30,6 +30,7 @@ public class VoiceRecorderView extends RelativeLayout {
     protected Context context;
     protected LayoutInflater inflater;
     protected Drawable[] micImages;
+    protected boolean isImagesCustom = false;
     protected VoiceRecorder voiceRecorder;
 
     protected PowerManager.WakeLock wakeLock;
@@ -69,7 +70,8 @@ public class VoiceRecorderView extends RelativeLayout {
         voiceRecorder = new VoiceRecorder(micImageHandler);
 
         // animation resources, used for recording
-        micImages = new Drawable[]{getResources().getDrawable(R.drawable.ease_record_animate_01),
+        micImages = new Drawable[]{
+                getResources().getDrawable(R.drawable.ease_record_animate_01),
                 getResources().getDrawable(R.drawable.ease_record_animate_02),
                 getResources().getDrawable(R.drawable.ease_record_animate_03),
                 getResources().getDrawable(R.drawable.ease_record_animate_04),
@@ -134,7 +136,7 @@ public class VoiceRecorderView extends RelativeLayout {
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Toast.makeText(context, R.string.send_failure_please, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(context, R.string.send_failure_please, Toast.LENGTH_SHORT).show();
                     }
                 }
                 return true;
@@ -219,8 +221,23 @@ public class VoiceRecorderView extends RelativeLayout {
         return voiceRecorder.isRecording();
     }
 
-
+    /**
+     * 自定义语音命名
+     *
+     * @param isTrue true为自定义，false为默认命名（时间戳）
+     * @param name
+     */
     public void setCustomNamingFile(boolean isTrue, String name) {
         voiceRecorder.isCustomNamingFile(isTrue, name);
+    }
+
+    /**
+     * 目前需要传入15张帧动画png
+     *
+     * @param animationDrawable
+     */
+    public void setDrawableAnimation(Drawable[] animationDrawable) {
+        micImages = null;
+        this.micImages = animationDrawable;
     }
 }
