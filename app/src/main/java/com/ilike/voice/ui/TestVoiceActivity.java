@@ -22,6 +22,7 @@ import com.ilike.voicerecorder.widget.VoiceRecorderView;
 import com.ilike.voicerecorder.widget.VoicePlayClickListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,13 +89,32 @@ public class TestVoiceActivity extends AppCompatActivity {
         //noinspection ConstantConditions
         voiceRecorderView = (VoiceRecorderView) findViewById(R.id.voice_recorder);
 
+/*        voiceRecorderView.setDrawableAnimation(new Drawable[]{
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_01),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_02),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_03),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_04),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_05),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_06),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_07),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_08),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_09),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_10),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_11),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_12),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_13),
+                getResources().getDrawable(com.ilike.voicerecorder.R.drawable.ease_record_animate_14),});*/
+        //voiceRecorderView.setCustomNamingFile(true, "语音命名");
+        //PathUtil.getInstance().initDirs("voice", this);
+
+
         tvRecorder = (TextView) findViewById(R.id.tv_touch_recorder);
         tvRecorder.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
 
-                return  voiceRecorderView.onPressToSpeakBtnTouch(v, event, new VoiceRecorderView.EaseVoiceRecorderCallback() {
+                return voiceRecorderView.onPressToSpeakBtnTouch(v, event, new VoiceRecorderView.EaseVoiceRecorderCallback() {
 
                     @Override
                     public void onVoiceRecordComplete(String voiceFilePath, int voiceTimeLength) {
@@ -119,7 +139,11 @@ public class TestVoiceActivity extends AppCompatActivity {
             @Override
             public void onItemClick(ImageView imageView, String path, int position) {
                 //播放语音
-                new VoicePlayClickListener(imageView, TestVoiceActivity.this).playVoice(path);
+                VoicePlayClickListener voicePlayClickListener = new VoicePlayClickListener(imageView, TestVoiceActivity.this);
+               /* voicePlayClickListener.setStopPlayIcon(R.drawable.ease_chatto_voice_playing);
+                voicePlayClickListener.setPlayingIconDrawableResoure(R.drawable.voice_to_icon);*/
+                voicePlayClickListener.playVoice(path);
+                // new VoicePlayClickListener(imageView, TestVoiceActivity.this).playUrlVoice("http://up.xzdown.com/s/2017-11-01/1509518990.mp3");
             }
         });
 

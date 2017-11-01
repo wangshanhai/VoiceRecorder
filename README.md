@@ -61,6 +61,39 @@ voiceRecorderView.setDrawableAnimation(Drawable[] animationDrawable)
 
 ```
 
+```java
+/**
+* 设置停止播放语音时，显示的静态icon
+*/
+VoicePlayClickListener.setStopPlayIcon(R.drawable.ease_chatto_voice_playing)
+
+```
+
+```java
+/**
+* 设置播放语音的动画，
+*/
+VoicePlayClickListener.setStopPlayIcon(R.drawable.ease_chatto_voice_playing)
+
+-------------------------------------------------------
+比如这样的动画:
+<?xml version="1.0" encoding="utf-8"?>
+   <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+       android:oneshot="false">
+       <item
+           android:drawable="@drawable/ease_chatto_voice_playing_f1"
+           android:duration="200" />
+       <item
+           android:drawable="@drawable/ease_chatto_voice_playing_f2"
+           android:duration="200" />
+       <item
+           android:drawable="@drawable/ease_chatto_voice_playing_f3"
+           android:duration="200" />
+</animation-list>
+-------------------------------------------------------
+
+```
+
 
 ```java
 /**
@@ -89,12 +122,22 @@ tvRecorder.setOnTouchListener(new View.OnTouchListener() {
 ```java
 
 /**
-* 播放语音
+* 播放SD卡本地语音路径
 * imageView显示动画
 * Context，上下文
 * path ，语音路径
 */
 new VoicePlayClickListener(imageView, Context).playVoice(path);
+
+
+/**
+* 播放网络语音路径
+* imageView显示动画
+* Context，上下文
+* path ，语音路径
+*/
+new VoicePlayClickListener(imageView, Context).playUrlVoice(path);
+
 
 
 ```

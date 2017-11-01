@@ -39,6 +39,9 @@ public class VoicePlayClickListener implements View.OnClickListener {
     private static final String TAG = "VoicePlayClickListener";
 
     ImageView voiceIconView;
+    private boolean isSetingPlayingIcon = false;
+    private int stopPlayingDrawableId = 0;
+
 
     private AnimationDrawable voiceAnimation = null;
     MediaPlayer mediaPlayer = null;
@@ -60,7 +63,11 @@ public class VoicePlayClickListener implements View.OnClickListener {
      */
     public void stopPlayVoice() {
         voiceAnimation.stop();
-        voiceIconView.setImageResource(R.drawable.ease_chatto_voice_playing);
+        if (stopPlayingDrawableId != 0) {
+            voiceIconView.setImageResource(stopPlayingDrawableId);
+        }else{
+            voiceIconView.setImageResource(R.drawable.ease_chatto_voice_playing);
+        }
 
         // stop play voice
         if (mediaPlayer != null) {
@@ -127,13 +134,90 @@ public class VoicePlayClickListener implements View.OnClickListener {
         }
     }
 
+
+    /**
+     * play voice for sd path
+     *
+     * @param filePath
+     */
+    public void playUrlVoice(String filePath) {
+        this.getLocalUrl = filePath;
+        if (isPlaying) {
+            if (playMsgId != null) {
+                currentPlayListener.stopPlayVoice();
+            }
+        }
+
+        playMsgId = filePath;
+        AudioManager audioManager = (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
+
+        mediaPlayer = new MediaPlayer();
+        if (EaseUI.getInstance().getSettingsProvider().isSpeakerOpened()) {
+            audioManager.setMode(AudioManager.MODE_NORMAL);
+            audioManager.setSpeakerphoneOn(true);
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
+        } else {
+            audioManager.setSpeakerphoneOn(false);// 关闭扬声器
+            // 把声音设定成Earpiece（听筒）出来，设定为正在通话中
+            audioManager.setMode(AudioManager.MODE_IN_CALL);
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);
+        }
+        try {
+            mediaPlayer.setDataSource(filePath);
+            mediaPlayer.prepare();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    // TODO Auto-generated method stub
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                    stopPlayVoice(); // stop animation
+                }
+
+            });
+            isPlaying = true;
+            currentPlayListener = this;
+            mediaPlayer.start();
+            showAnimation();
+        } catch (Exception e) {
+            Log.e("Exception", e.getMessage());
+        }
+    }
+
+
     // show the voice playing animation
     private void showAnimation() {
         // play voice, and start animation
-        voiceIconView.setImageResource(R.drawable.voice_to_icon);
+        if (!isSetingPlayingIcon) {
+            /**
+             * 使用外部设置进来的播放语音的动画
+             */
+            voiceIconView.setImageResource(R.drawable.voice_to_icon);
+        }
         voiceAnimation = (AnimationDrawable) voiceIconView.getDrawable();
         voiceAnimation.start();
     }
+
+    /**
+     * 设置播放语音的动画
+     *
+     * @param drawableResoureId
+     */
+    public void setPlayingIconDrawableResoure(int drawableResoureId) {
+        isSetingPlayingIcon = true;
+        voiceIconView.setImageResource(R.drawable.voice_to_icon);
+    }
+
+    /**
+     * 设置停止播放语音时，显示的静态icon
+     *
+     * @param drawableResoureId
+     */
+    public void setStopPlayIcon(int drawableResoureId) {
+        this.stopPlayingDrawableId = drawableResoureId;
+    }
+
 
     @Override
     public void onClick(View v) {
