@@ -13,7 +13,7 @@ import android.os.Environment;
 import java.io.File;
 
 public class PathUtil {
-    public static String pathPrefix="/Android/data/";
+    public static String pathPrefix="";
     public static final String historyPathName = "/chat/";
     public static final String imagePathName = "/image/";
     public static final String voicePathName = "/voice/";

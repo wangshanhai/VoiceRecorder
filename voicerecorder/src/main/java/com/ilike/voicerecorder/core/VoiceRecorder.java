@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.MediaRecorder;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.text.format.Time;
 import android.util.Log;
 
@@ -33,12 +34,15 @@ public class VoiceRecorder {
     private File file;
     private Handler handler;
 
+    private boolean isCustomNamingFile =false;
+
     public VoiceRecorder(Handler handler) {
         this.handler = handler;
     }
 
     /**
      * start recording to the file
+     *
      * @return string
      */
     public String startRecording(Context appContext) {
@@ -62,9 +66,19 @@ public class VoiceRecorder {
             // one easy way is to use temp file
             // file = File.createTempFile(PREFIX + userId, EXTENSION,
             // User.getVoicePath());
-            voiceFileName = getVoiceFileName(System.currentTimeMillis() + "");
-            //PathUtil.getInstance().initDirs("chat","voice",appContext);
-            PathUtil.getInstance().createDirs("chat","voice",appContext);
+
+            if(!isCustomNamingFile){
+                //默认命名是用时间戳0, 15位
+                voiceFileName = getVoiceFileName(System.currentTimeMillis() + "");
+            }
+
+            if (!isDirExist()) {
+                /**
+                 * not exist ,so create default folder(/Android/data/包名/chat/voice)
+                 */
+                PathUtil.getInstance().createDirs("chat", "voice", appContext);
+            }
+
             voiceFilePath = PathUtil.getInstance().getVoicePath() + "/" + voiceFileName;
             file = new File(voiceFilePath);
             recorder.setOutputFile(file.getAbsolutePath());
@@ -100,11 +114,11 @@ public class VoiceRecorder {
         return file == null ? null : file.getAbsolutePath();
     }
 
+
     /**
      * stop the recoding
-     *  seconds of the voice recorded
+     * seconds of the voice recorded
      */
-
     public void discardRecording() {
         if (recorder != null) {
             try {
@@ -159,12 +173,44 @@ public class VoiceRecorder {
         return isRecording;
     }
 
-
     public String getVoiceFilePath() {
         return voiceFilePath;
     }
 
     public String getVoiceFileName() {
         return voiceFileName;
+    }
+
+
+
+
+    /**
+     * 判断是否存在缓存文件夹
+     *
+     * @return
+     */
+    public boolean isDirExist() {
+        if (TextUtils.isEmpty(PathUtil.pathPrefix)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    public void isCustomNamingFile(boolean isTrue, String name) {
+        if (isTrue) {
+            isCustomNamingFile = isTrue;
+            setVoiceFileName(name);
+        }
+    }
+
+    /**
+     * 自定义音频文件命名
+     *
+     * @param voiceFileName
+     */
+    public void setVoiceFileName(String voiceFileName) {
+        this.voiceFileName = voiceFileName+EXTENSION;
     }
 }

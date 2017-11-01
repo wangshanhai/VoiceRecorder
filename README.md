@@ -32,7 +32,29 @@ compile 'com.ilike:voicerecorder:1.0.0'
 #### 2.在Activity中添加如下代码：
 
 ```java
+/**
+* 设置文件存放目录，存放路径如：/Android/data/包名/chat/voice/
+* 默认不设置，路径存放为：/Android/data/包名/chat/voice/
+*/
+PathUtil.getInstance().createDirs("chat", "voice", appContext);
 
+
+```
+
+
+```java
+/**
+* 自定义命名文件
+* 默认不设置是用时间戳
+*/
+voiceRecorderView.setCustomNamingFile(true,"语音命名.mp3");
+
+```
+
+```java
+/**
+* 录制语音
+*/
 tvRecorder.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -53,6 +75,19 @@ tvRecorder.setOnTouchListener(new View.OnTouchListener() {
 
 ```
 
+```java
+
+/**
+* 播放语音
+* imageView显示动画
+* Context，上下文
+* path ，语音路径
+*/
+new VoicePlayClickListener(imageView, Context).playVoice(path);
+
+
+```
+
 #### 3.在布局文件xml中添加如下：
  
   ```xml
@@ -67,3 +102,6 @@ tvRecorder.setOnTouchListener(new View.OnTouchListener() {
     
   ```
 ![recordingView.jpg](https://github.com/wangshanhai/VoiceRecorder/blob/master/image/recordingView.jpg)
+
+
+

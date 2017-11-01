@@ -42,7 +42,6 @@ public class VoicePlayClickListener implements View.OnClickListener {
 
     private AnimationDrawable voiceAnimation = null;
     MediaPlayer mediaPlayer = null;
-    ImageView iv_read_status;
     Activity activity;
     private BaseAdapter adapter;
 
@@ -51,12 +50,9 @@ public class VoicePlayClickListener implements View.OnClickListener {
     public static String playMsgId = "";
     public static String getLocalUrl = "";
 
-    public VoicePlayClickListener(ImageView v, String micUrl, Activity context, BaseAdapter adapter) {
-        this.getLocalUrl = micUrl;
+    public VoicePlayClickListener(ImageView v, Activity context) {
         this.activity = context;
         voiceIconView = v;
-        this.adapter = adapter;
-
     }
 
     /**
@@ -73,20 +69,18 @@ public class VoicePlayClickListener implements View.OnClickListener {
         }
         isPlaying = false;
         playMsgId = null;
-        adapter.notifyDataSetChanged();
+        //   adapter.notifyDataSetChanged();
     }
 
     /**
      * play voice for path
+     *
      * @param filePath
      */
     public void playVoice(String filePath) {
-
+        this.getLocalUrl = filePath;
         if (isPlaying) {
             if (playMsgId != null) {
-                currentPlayListener.stopPlayVoice();
-               // return;
-            }else{
                 currentPlayListener.stopPlayVoice();
             }
 
@@ -128,10 +122,8 @@ public class VoicePlayClickListener implements View.OnClickListener {
             currentPlayListener = this;
             mediaPlayer.start();
             showAnimation();
-
-
         } catch (Exception e) {
-            System.out.println();
+            Log.e("Exception", e.getMessage());
         }
     }
 

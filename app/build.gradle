@@ -4,7 +4,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.layuva"
+        applicationId "com.ilike.voice"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1

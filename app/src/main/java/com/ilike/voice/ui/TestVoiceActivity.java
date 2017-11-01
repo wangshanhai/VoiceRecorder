@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.ilike.voice.R;
 import com.ilike.voice.adapter.EaseMessageAdapter;
 import com.ilike.voice.model.MessageBean;
+import com.ilike.voicerecorder.core.VoiceRecorder;
 import com.ilike.voicerecorder.utils.TimeUtils;
 import com.ilike.voicerecorder.widget.VoiceRecorderView;
 import com.ilike.voicerecorder.widget.VoicePlayClickListener;
@@ -90,6 +91,7 @@ public class TestVoiceActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
+
                 return  voiceRecorderView.onPressToSpeakBtnTouch(v, event, new VoiceRecorderView.EaseVoiceRecorderCallback() {
 
                     @Override
@@ -115,8 +117,7 @@ public class TestVoiceActivity extends AppCompatActivity {
             @Override
             public void onItemClick(ImageView imageView, String path, int position) {
                 //播放语音
-                new VoicePlayClickListener(imageView, path, TestVoiceActivity.this,
-                        adapter).playVoice(path);
+                new VoicePlayClickListener(imageView, TestVoiceActivity.this).playVoice(path);
             }
         });
 
