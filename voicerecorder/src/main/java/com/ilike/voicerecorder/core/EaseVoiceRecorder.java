@@ -39,6 +39,7 @@ public class EaseVoiceRecorder {
 
     /**
      * start recording to the file
+     * @return string
      */
     public String startRecording(Context appContext) {
         file = null;
@@ -101,8 +102,7 @@ public class EaseVoiceRecorder {
 
     /**
      * stop the recoding
-     *
-     * @return seconds of the voice recorded
+     *  seconds of the voice recorded
      */
 
     public void discardRecording() {

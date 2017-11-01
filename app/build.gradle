@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -15,6 +16,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -34,4 +39,6 @@ dependencies {
     //RxJava2
     compile "io.reactivex.rxjava2:rxjava:2.0.0"
     compile project(':voicerecorder')
+
+   /* */
 }

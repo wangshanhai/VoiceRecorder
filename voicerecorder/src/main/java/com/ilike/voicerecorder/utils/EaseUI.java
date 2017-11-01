@@ -67,8 +67,7 @@ public final class EaseUI {
      * this function will initialize the SDK and easeUI kit
      *
      * @param context
-     * @param options use default if options is null
-     * @return
+     * @return boolean
      */
     public synchronized boolean init(Context context) {
         if (sdkInited) {
