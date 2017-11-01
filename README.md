@@ -5,7 +5,7 @@
  
 具体看图和gif动画效果：
 
-[voicerecorder.gif](https://github.com/wangshanhai/VoiceRecorder/blob/master/image/voicerecorder.gif)
+![voicerecorder.gif](https://github.com/wangshanhai/VoiceRecorder/blob/master/image/voicerecorder.gif)
 
 
-[voicerecorder.gif](https://github.com/wangshanhai/VoiceRecorder/blob/master/image/voicerecorder2.gif)
+![voicerecorder.gif](https://github.com/wangshanhai/VoiceRecorder/blob/master/image/voicerecorder2.gif)
