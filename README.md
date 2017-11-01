@@ -17,7 +17,7 @@
 
 ### **使用步骤：**
 
-## **注意，目前还在开发阶段，发现bug记得给我提issues哈**
+## **注意，目前还在开发阶段，有bug记得提issues哈**
 ## **注意，6.0以上系统需要运行时授权读取sd卡和音频**
 
 #### 1.添加Jcenter仓库 Gradle依赖：
@@ -162,6 +162,26 @@ new VoicePlayClickListener(imageView, Context).playUrlVoice(path);
     
   ```
 ![recordingView.jpg](https://github.com/wangshanhai/VoiceRecorder/blob/master/image/recordingView.jpg)
+
+
+
+
+## License
+
+```
+Copyright 2017 ilikeshatang
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 
 
