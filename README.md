@@ -1,7 +1,8 @@
 
 [![Bintray](https://img.shields.io/bintray/v/ilike/maven/voicerecorder.svg)](https://bintray.com/ilike/maven/voicerecorder)
 [![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg)](https://android-arsenal.com/api?level=9) 
-[![download](https://img.shields.io/badge/downloadZip-v1.0.1-orange.svg)](https://github.com/wangshanhai/VoiceRecorder/archive/master.zip)[![license](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![download](https://img.shields.io/badge/downloadZip-v1.0.2-orange.svg)](https://github.com/wangshanhai/VoiceRecorder/archive/master.zip)
+[![license](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 
 
@@ -75,7 +76,7 @@ voiceRecorderView.setCustomNamingFile(true,"语音命名.mp3");
 ```java
 /**
 * 自定义语音录制过程中，声音大小的动画，默认使用库文件中的动画，
-* 目前默认需要设置15张图片，以后更新自定义动画帧数
+* 目前默认需要设置14张图片，以后更新自定义动画帧数
 */
 voiceRecorderView.setDrawableAnimation(Drawable[] animationDrawable)
 
