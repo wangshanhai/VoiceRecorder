@@ -103,7 +103,8 @@ public class TestVoiceActivity extends AppCompatActivity {
         //voiceRecorderView.setCustomNamingFile(true, "语音命名");
         //PathUtil.getInstance().initDirs("voice", this);
 
-
+        voiceRecorderView.setShowMoveUpToCancelHint("松开手指，取消发送");
+        voiceRecorderView.setShowReleaseToCancelHint("手指上滑，取消发送");
         tvRecorder = (TextView) findViewById(R.id.tv_touch_recorder);
         tvRecorder.setOnTouchListener(new View.OnTouchListener() {
             @Override

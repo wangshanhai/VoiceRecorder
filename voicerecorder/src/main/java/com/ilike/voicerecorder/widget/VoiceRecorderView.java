@@ -50,6 +50,9 @@ public class VoiceRecorderView extends RelativeLayout {
     protected ImageView micImage;
     protected TextView recordingHint;
 
+    protected String release_to_cancel = "";
+    protected String move_up_to_cancel = "";
+
     protected Handler micImageHandler = new Handler() {
         @Override
         public void handleMessage(android.os.Message msg) {
@@ -101,6 +104,11 @@ public class VoiceRecorderView extends RelativeLayout {
 
         wakeLock = ((PowerManager) context.getSystemService(Context.POWER_SERVICE)).newWakeLock(
                 PowerManager.SCREEN_DIM_WAKE_LOCK, "voice");
+
+        //默认提示语
+        release_to_cancel = context.getString(R.string.release_to_cancel);
+        move_up_to_cancel = context.getString(R.string.move_up_to_cancel);
+
     }
 
     /**
@@ -193,12 +201,14 @@ public class VoiceRecorderView extends RelativeLayout {
     }
 
     public void showReleaseToCancelHint() {
-        recordingHint.setText(context.getString(R.string.release_to_cancel));
+       /* recordingHint.setText(context.getString(R.string.release_to_cancel));
+        recordingHint.setBackgroundResource(R.drawable.ease_recording_text_hint_bg);*/
+        recordingHint.setText(release_to_cancel);
         recordingHint.setBackgroundResource(R.drawable.ease_recording_text_hint_bg);
     }
 
     public void showMoveUpToCancelHint() {
-        recordingHint.setText(context.getString(R.string.move_up_to_cancel));
+        recordingHint.setText(move_up_to_cancel);
         recordingHint.setBackgroundColor(Color.TRANSPARENT);
     }
 
@@ -253,4 +263,22 @@ public class VoiceRecorderView extends RelativeLayout {
         micImages = null;
         this.micImages = animationDrawable;
     }
+
+
+    /**
+     * 设置按下显示的提示
+     * @param releaseToCancelHint
+     */
+    public void setShowReleaseToCancelHint(String releaseToCancelHint) {
+        this.release_to_cancel = releaseToCancelHint;
+    }
+
+    /**
+     * 设置手指向上移动显示的提示语
+     * @param moveUpToCancelHint
+     */
+    public void setShowMoveUpToCancelHint(String moveUpToCancelHint) {
+        this.move_up_to_cancel = moveUpToCancelHint;
+    }
+
 }
