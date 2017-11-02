@@ -34,7 +34,7 @@
 #### 1.添加Jcenter仓库 Gradle依赖：
 ```java
 
-compile 'com.ilike:voicerecorder:1.0.1'
+compile 'com.ilike:voicerecorder:1.0.2'
 
 ```
 或者
@@ -44,7 +44,7 @@ compile 'com.ilike:voicerecorder:1.0.1'
 <dependency>
   <groupId>com.ilike</groupId>
   <artifactId>voicerecorder</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <type>pom</type>
 </dependency>
 
