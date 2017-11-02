@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0.0"
+        versionCode 2
+        versionName "1.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -42,9 +42,8 @@ publish {
     userOrg = 'ilike'//bintray.com用户名
     groupId = 'com.ilike'//jcenter上的路径
     artifactId = 'voicerecorder'//项目名称
-    publishVersion = '1.0.0'//版本号
+    publishVersion = '1.0.1'//版本号
     desc = 'This is a lightweight voice recording and playback Library'//描述，不重要
     website = 'https://github.com/wangshanhai/VoiceRecorder'//网站，不重要
 }
 
-//gradlew clean build bintrayUpload -PbintrayUser=ilike -PbintrayKey=d6d13496e61fc40a68bf110103226e74821580d9  -PdryRun=false

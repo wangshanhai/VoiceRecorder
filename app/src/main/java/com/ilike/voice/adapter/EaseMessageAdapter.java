@@ -27,7 +27,7 @@ import android.widget.TextView;
 import com.ilike.voice.R;
 import com.ilike.voice.model.MessageBean;
 import com.ilike.voicerecorder.utils.CommonUtils;
-import com.ilike.voicerecorder.utils.TimeUtils;
+import com.ilike.voice.utils.TimeUtils;
 
 import java.util.List;
 

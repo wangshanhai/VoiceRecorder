@@ -1,7 +1,6 @@
 package com.ilike.voice.ui;
 
 import android.Manifest;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,14 +14,11 @@ import android.widget.Toast;
 import com.ilike.voice.R;
 import com.ilike.voice.adapter.EaseMessageAdapter;
 import com.ilike.voice.model.MessageBean;
-import com.ilike.voicerecorder.core.VoiceRecorder;
-import com.ilike.voicerecorder.utils.PathUtil;
-import com.ilike.voicerecorder.utils.TimeUtils;
+import com.ilike.voice.utils.TimeUtils;
 import com.ilike.voicerecorder.widget.VoiceRecorderView;
 import com.ilike.voicerecorder.widget.VoicePlayClickListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 
