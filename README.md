@@ -20,6 +20,17 @@
 ## **注意，目前还在开发阶段，有bug记得提issues哈**
 ## **注意，6.0以上系统需要运行时授权读取sd卡和音频**
 
+## **注意，需要权限** ##
+```java
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+```
+
 #### 1.添加Jcenter仓库 Gradle依赖：
 ```java
 
