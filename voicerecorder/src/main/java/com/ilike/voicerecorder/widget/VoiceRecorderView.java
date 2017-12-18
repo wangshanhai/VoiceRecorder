@@ -28,9 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ilike.voicerecorder.R;
-import com.ilike.voicerecorder.utils.EMError;
-import com.ilike.voicerecorder.utils.CommonUtils;
 import com.ilike.voicerecorder.core.VoiceRecorder;
+import com.ilike.voicerecorder.utils.CommonUtils;
+import com.ilike.voicerecorder.utils.EMError;
 
 
 /**
@@ -121,8 +121,11 @@ public class VoiceRecorderView extends RelativeLayout {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 try {
-                    if (VoicePlayClickListener.isPlaying)
-                        VoicePlayClickListener.currentPlayListener.stopPlayVoice();
+                    /**
+                     * 该处展示不处理
+                     */
+                  /*  if (VoicePlayClickListener.isPlaying)
+                        VoicePlayClickListener.currentPlayListener.stopPlayVoice();*/
                     v.setPressed(true);
                     startRecording();
                 } catch (Exception e) {
@@ -157,7 +160,7 @@ public class VoiceRecorderView extends RelativeLayout {
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                       // Toast.makeText(context, R.string.send_failure_please, Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(context, R.string.send_failure_please, Toast.LENGTH_SHORT).show();
                     }
                 }
                 return true;
@@ -267,6 +270,7 @@ public class VoiceRecorderView extends RelativeLayout {
 
     /**
      * 设置按下显示的提示
+     *
      * @param releaseToCancelHint
      */
     public void setShowReleaseToCancelHint(String releaseToCancelHint) {
@@ -275,6 +279,7 @@ public class VoiceRecorderView extends RelativeLayout {
 
     /**
      * 设置手指向上移动显示的提示语
+     *
      * @param moveUpToCancelHint
      */
     public void setShowMoveUpToCancelHint(String moveUpToCancelHint) {

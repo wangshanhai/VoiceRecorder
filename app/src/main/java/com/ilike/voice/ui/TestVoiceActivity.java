@@ -1,7 +1,12 @@
 package com.ilike.voice.ui;
 
 import android.Manifest;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -14,9 +19,10 @@ import android.widget.Toast;
 import com.ilike.voice.R;
 import com.ilike.voice.adapter.EaseMessageAdapter;
 import com.ilike.voice.model.MessageBean;
+import com.ilike.voice.service.PlayService;
+import com.ilike.voice.utils.AppCache;
 import com.ilike.voice.utils.TimeUtils;
 import com.ilike.voicerecorder.widget.VoiceRecorderView;
-import com.ilike.voicerecorder.widget.VoicePlayClickListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
@@ -35,6 +41,7 @@ public class TestVoiceActivity extends AppCompatActivity {
 
     private List<MessageBean> voices;
     EaseMessageAdapter adapter;
+    PlayServiceConnection mPlayServiceConnection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,12 @@ public class TestVoiceActivity extends AppCompatActivity {
 
     private void initView() {
 
+        Intent intent = new Intent();
+        intent.setClass(this, PlayService.class);
+        mPlayServiceConnection = new PlayServiceConnection();
+        bindService(intent, mPlayServiceConnection, Context.BIND_AUTO_CREATE);
+
+
         message_list = findViewById(R.id.message_list);
 
         // hold to record voice
@@ -110,6 +123,11 @@ public class TestVoiceActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (AppCache.getPlayService().isPlaying) {
+                        AppCache.getPlayService().stopPlayVoiceAnimation2();
+                    }
+                }
 
                 return voiceRecorderView.onPressToSpeakBtnTouch(v, event, new VoiceRecorderView.EaseVoiceRecorderCallback() {
 
@@ -136,14 +154,36 @@ public class TestVoiceActivity extends AppCompatActivity {
             @Override
             public void onItemClick(ImageView imageView, String path, int position) {
                 //播放语音
-                VoicePlayClickListener voicePlayClickListener = new VoicePlayClickListener(imageView, TestVoiceActivity.this);
+                //  VoicePlayClickListener voicePlayClickListener = new VoicePlayClickListener(imageView, TestVoiceActivity.this);
                /* voicePlayClickListener.setStopPlayIcon(R.drawable.ease_chatto_voice_playing);
                 voicePlayClickListener.setPlayingIconDrawableResoure(R.drawable.voice_to_icon);*/
-                voicePlayClickListener.playVoice(path);
-                // new VoicePlayClickListener(imageView, TestVoiceActivity.this).playUrlVoice("http://up.xzdown.com/s/2017-11-01/1509518990.mp3");
+                //   voicePlayClickListener.playVoice(path);
+
+                // new VoicePlayClickListener(imageView, TestVoiceActivity.this).playUrlVoice("http://img.layuva.com//b96c4bde124a328d9c6edb5b7d51afb2.amr");
+
+
+                if (AppCache.getPlayService() != null) {
+                    AppCache.getPlayService().setImageView(imageView);
+                    AppCache.getPlayService().stopPlayVoiceAnimation();
+                  //  AppCache.getPlayService().play("http://img.layuva.com//b96c4bde124a328d9c6edb5b7d51afb2.amr");
+                    AppCache.getPlayService().play(path);
+                }
             }
         });
 
     }
 
+
+    private class PlayServiceConnection implements ServiceConnection {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            final PlayService playService = ((PlayService.PlayBinder) service).getService();
+            Log.e("onServiceConnected----", "onServiceConnected");
+            AppCache.setPlayService(playService);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+        }
+    }
 }

@@ -105,6 +105,8 @@ public class EaseMessageAdapter extends BaseAdapter {
 
         viewHolder.timestamp.setText(TimeUtils.getTime(bean.time));
 
+        viewHolder.iv_voice.setImageResource(R.drawable.ease_chatto_voice_playing);
+
         viewHolder.bubble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

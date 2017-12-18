@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -42,7 +42,7 @@ publish {
     userOrg = 'ilike'//bintray.com用户名
     groupId = 'com.ilike'//jcenter上的路径
     artifactId = 'voicerecorder'//项目名称
-    publishVersion = '1.0.2'//版本号
+    publishVersion = '1.0.3'//版本号
     desc = 'This is a lightweight voice recording and playback Library'//描述，不重要
     website = 'https://github.com/wangshanhai/VoiceRecorder'//网站，不重要
 }
