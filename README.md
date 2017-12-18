@@ -148,8 +148,12 @@ tvRecorder.setOnTouchListener(new View.OnTouchListener() {
 * Context，上下文
 * path ，语音路径
 */
+该方法废掉
 new VoicePlayClickListener(imageView, Context).playVoice(path);
 
+这时候使用服务来播放音频更好
+demo中是这样使用
+ AppCache.getPlayService().play(path);
 
 /**
 * 播放网络语音路径
